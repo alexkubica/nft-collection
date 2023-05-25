@@ -355,7 +355,7 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <div>
-          <h1 className={styles.title}>Welcome to Alex Kubica's NFT Collection!</h1>
+          <h1 className={styles.title}>Welcome to Alex Kubica NFT Collection!</h1>
           <div className={styles.description}>
             It&#39;s an NFT collection for developers in Crypto.
           </div>
