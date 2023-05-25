@@ -1,6 +1,5 @@
 const { ethers } = require("hardhat");
 require("dotenv").config({ path: ".env" });
-const {  METADATA_URL } = require("../constants");
 
 async function main() {
   // whitelist contract
@@ -20,15 +19,16 @@ async function main() {
     deployedWhitelistContract.address
   );
 
+  const whitelistAddress = deployedWhitelistContract.address;
   // URL from where we can extract the metadata for a Crypto Dev NFT
-  const metadataURL = METADATA_URL;
+  const metadataURL = "https://nft-collection-two-black.vercel.app/api/";
 
   const cryptoDevsContract = await ethers.getContractFactory("CryptoDevs");
 
   // deploy the contract
   const deployedCryptoDevsContract = await cryptoDevsContract.deploy(
     metadataURL,
-    whitelistContract
+    whitelistAddress
   );
 
   // Wait for it to finish deploying
