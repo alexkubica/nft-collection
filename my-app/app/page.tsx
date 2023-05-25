@@ -183,11 +183,13 @@ export default function Home() {
       // We will get the signer now to extract the address of the currently connected MetaMask account
       const signer = await getProviderOrSigner(true);
       // Get the address associated to the signer which is connected to  MetaMask
+      // @ts-ignore
       const address = await signer.getAddress();
       if (address.toLowerCase() === _owner.toLowerCase()) {
         setIsOwner(true);
       }
     } catch (err) {
+      // @ts-ignore
       console.error(err.message);
     }
   };
@@ -227,6 +229,7 @@ export default function Home() {
   const getProviderOrSigner = async (needSigner = false) => {
     // Connect to Metamask
     // Since we store `web3Modal` as a reference, we need to access the `current` value to get access to the underlying object
+      // @ts-ignore
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
 
@@ -261,6 +264,7 @@ export default function Home() {
 
       // Check if presale has started and ended
       const _presaleStarted = checkIfPresaleStarted();
+      // @ts-ignore
       if (_presaleStarted) {
         checkIfPresaleEnded();
       }
